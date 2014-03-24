@@ -1,0 +1,21 @@
+# DO NOT CHANGE THIS FILE
+# THIS FILE IS MANAGET BY Ansible
+# {{ ansible_managed }}
+
+# put custom scripts into /etc/zabbix/scripts
+# put custom configuration into /etc/zabbix/zabbix_agentd.d
+
+PidFile={{ zabbix_agent_dir_pid }}/zabbix_agentd.pid
+
+LogFile={{ zabbix_agent_dir_log }}/zabbix_agentd.log
+LogFileSize=1
+
+ListenIP={{ zabbix_agent_config_listen_ip|join(',') }}
+StartAgents={{ zabbix_agent_config_start_agents }}
+Server={{ zabbix_agent_config_server|join(',') }}
+ServerActive={{ zabbix_agent_config_server_active|join(',') }}
+
+Hostname={{ inventory_hostname }}
+
+# put all custom configuration  include dir
+Include={{ zabbix_agent_dir_etc }}/{{ zabbix_agent_dir_include }}

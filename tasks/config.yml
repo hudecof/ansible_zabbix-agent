@@ -1,0 +1,27 @@
+---
+- name: "setup zabbix-agentd.conf"
+  action: template src={{ item }} dest={{ zabbix_agent_dir_etc }}/zabbix_agentd.conf backup=yes owner=root group={{ zabbix_agent_user }} mode=0640
+  first_available_file:
+    - zabbix_agentd.conf.j2 
+  tags:
+    - config
+  notify:
+    - restart zabbix-agent
+
+- name: "copy config directory"
+  action: copy src={{ item }} dest={{ zabbix_agent_dir_etc }}/{{ zabbix_agent_dir_include }} backup=no owner=root group={{ zabbix_agent_user }} mode=0640
+  with_fileglob:
+    - zabbix-agent.d/*
+  tags:
+    - config
+  notify:
+    - restart zabbix-agent
+
+- name: "copy script directory"
+  action: copy src={{ item }} dest={{ zabbix_agent_dir_etc }}/{{ zabbix_agent_dir_scripts }} backup=no owner=root group={{ zabbix_agent_user }} mode=0750
+  with_fileglob:
+    - scripts/*
+  tags:
+    - config
+  notify:
+    - restart zabbix-agent

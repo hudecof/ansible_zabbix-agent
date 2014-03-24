@@ -1,0 +1,9 @@
+# zabbix 2.0
+
+#deb http://repo.zabbix.com/zabbix/2.0/debian wheezy main
+#deb-src http://repo.zabbix.com/zabbix/2.0/debian wheezy main
+
+# zabbix 2.2
+deb http://repo.zabbix.com/zabbix/2.2/debian wheezy main
+#deb-src http://repo.zabbix.com/zabbix/2.2/debian wheezy main
+

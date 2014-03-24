@@ -1,0 +1,4 @@
+# there is no confoguration file for your Debian/Ubuntu release
+# run ansible setup module to find out the variables
+#  - ansible_lsb.id
+#  - ansible_lsb.major_release
