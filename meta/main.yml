@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Peter Hudec
-  description: 
+  description: installation and configuration of the zabbix-agent
   company: CNC, a.s.
   license: license (GPLv2, CC-BY, etc)
   min_ansible_version: 1.4 (or higher)
@@ -9,19 +9,16 @@ galaxy_info:
   platforms:
   - name: EL
     versions:
+    - 5
     - 6
   - name: Ubuntu
     versions:
     - lucid
-  #  - oneiric
     - precise
-  #  - 11
   - name: Debian
     versions:
     - squeeze
     - wheezy
   categories:
   - monitoring
-#dependencies:
-  # List your role dependencies here, one per line. Only
-  # dependencies available via galaxy should be listed here.
+dependencies: []
