@@ -4,16 +4,19 @@
   first_available_file:
     - pkg_yum/zabbix.{{ ansible_lsb.id }}.{{ ansible_lsb.major_release }}.repo
     - pkg_yum/zabbix.default.list
-  tags: 
+  tags:
+    - zabbix-agent
     - repository
 
 - name: "installing repository gpg"
   action: copy src=pkg_apt/zabbix.gpg dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX owner=root group=root mode=0644
   tags:
+    - zabbix-agent
     - repository
 
 - name: "check packages (RedHat)"
   action: yum pkg={{ item }} state={{ zabbix_agent_pkg_state }}
   tags:
+    - zabbix-agent
     - setup
   with_items: "{{ zabbix_agent_packages }}"

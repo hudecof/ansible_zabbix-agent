@@ -7,4 +7,6 @@
     - { file: "{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_dir_scripts }}", owner: "root", group: "{{ zabbix_agent_group}}", mode: "0751" }
     - { file: "{{ zabbix_agent_dir_pid }}", owner: "{{ zabbix_agent_user }}", group: "{{ zabbix_agent_group}}", mode: "0750" } 
     - { file: "{{ zabbix_agent_dir_log }}", owner: "{{ zabbix_agent_user }}", group: "{{ zabbix_agent_group}}", mode: "0750" }
-  tags: setup
+  tags:
+    - zabbix-agent
+    - setup
