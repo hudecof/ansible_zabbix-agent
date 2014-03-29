@@ -19,4 +19,4 @@
   tags:
     - zabbix-agent
     - setup
-  with_items: "{{ zabbix_agent_packages }}"
+  with_items: zabbix_agent_packages
