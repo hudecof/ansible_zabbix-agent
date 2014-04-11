@@ -20,3 +20,7 @@ zabbix_agent_dir_scripts: scripts
 zabbix_agent_pkg_state: present
 zabbix_agent_service_enabled: yes
 zabbix_agent_service_state: started
+
+# where to lookup for include and scripts
+# deflaults in role directory
+zabbix_agent_dir_prefix: .
