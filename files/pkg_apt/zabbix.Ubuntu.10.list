@@ -1,0 +1,2 @@
+deb http://repo.zabbix.com/zabbix/2.0/ubuntu lucid main
+deb-src http://repo.zabbix.com/zabbix/2.0/ubuntu lucid main

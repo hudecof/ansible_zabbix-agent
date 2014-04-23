@@ -1,0 +1,2 @@
+deb http://repo.zabbix.com/zabbix/2.2/ubuntu precise main
+deb-src http://repo.zabbix.com/zabbix/2.2/ubuntu precise main
