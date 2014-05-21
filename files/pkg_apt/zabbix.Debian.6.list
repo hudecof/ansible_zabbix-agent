@@ -1,2 +1,2 @@
-deb http://repo.zabbix.com/zabbix/2.2/debian wheezy main
-deb-src http://repo.zabbix.com/zabbix/2.2/debian wheezy main
+deb http://repo.zabbix.com/zabbix/2.0/debian squeeze main
+deb-src http://repo.zabbix.com/zabbix/2.0/debian squeeze main
