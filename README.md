@@ -1,9 +1,9 @@
-authoritative_dns
+zabbix-agentd
 =================
 
 This roles enables users to configure the zabbix-agent service.
 
-For supprted platform ist adds aleo the zabbix oficial repository.
+For supported platform it adds also the zabbix official repository.
 
 - https://www.zabbix.com/documentation/2.0/manual/installation/install_from_packages
 - https://www.zabbix.com/documentation/2.2/manual/installation/install_from_packages
@@ -21,7 +21,7 @@ Please readme the descriptions in the
   - defautls/main.yml
   - vars/main.yml
 
-The variables in the `defautls/main.yml` could be overriden in the `host_vars`/`group_vars`.
+The variables in the `defautls/main.yml` could be overridden in the `host_vars`/`group_vars`.
 The variables in the `vars/main.yml` are global for all managed servers.
 
 Dependencies
