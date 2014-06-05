@@ -4,7 +4,7 @@ galaxy_info:
   description: installation and configuration of the zabbix-agent
   company: CNC, a.s.
   license: license (GPLv2, CC-BY, etc)
-  min_ansible_version: 1.4 (or higher)
+  min_ansible_version: 1.4
   
   platforms:
   - name: EL
@@ -21,4 +21,3 @@ galaxy_info:
     - wheezy
   categories:
   - monitoring
-dependencies: []
