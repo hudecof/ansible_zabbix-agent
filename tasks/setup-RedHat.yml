@@ -1,5 +1,5 @@
 ---
-- name: "installing repository list"
+- name: "installing repository list (redhat)"
   action: copy src={{ item }} dest=/etc/yum.repos.d/zabbix.repo owner=root group=root mode=0644
   first_available_file:
     - pkg_yum/zabbix.{{ ansible_lsb.id }}.{{ ansible_lsb.major_release }}.repo
@@ -8,13 +8,13 @@
     - zabbix-agent
     - repository
 
-- name: "installing repository gpg"
-  action: copy src=pkg_apt/zabbix.gpg dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX owner=root group=root mode=0644
+- name: "installing repository gpg (redhat)"
+  action: copy src=pkg_yum/zabbix.gpg dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX owner=root group=root mode=0644
   tags:
     - zabbix-agent
     - repository
 
-- name: "check packages (RedHat)"
+- name: "check packages (redhat)"
   action: yum pkg={{ item }} state={{ zabbix_agent_pkg_state }}
   tags:
     - zabbix-agent

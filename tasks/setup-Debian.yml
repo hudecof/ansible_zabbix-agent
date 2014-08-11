@@ -1,5 +1,5 @@
 ---
-- name: "installing repository list"
+- name: "installing repository list (debian)"
   action: copy src={{ item }} dest=/etc/apt/sources.list.d/zabbix.list owner=root group=root mode=0644
   first_available_file:
     - pkg_apt/zabbix.{{ ansible_lsb.id }}.{{ ansible_lsb.major_release }}.list
@@ -9,14 +9,14 @@
     - repository
   register: pkg_list
 
-- name: "installing repository gpg"
+- name: "installing repository gpg (debian)"
   action: copy src=pkg_apt/zabbix.gpg dest=/etc/apt/trusted.gpg.d/zabbix-official-repo.gpg owner=root group=root mode=0644
   tags:
     - zabbix-agent
     - repository
   register: pkg_gpg
 
-- name: "updating package repository"
+- name: "updating package repository (debian)"
   action: apt update_cache=yes
   when: "pkg_list.changed or pkg_gpg.changed"
   tags:
