@@ -22,5 +22,5 @@ zabbix_agent_service_enabled: yes
 zabbix_agent_service_state: started
 
 # where to lookup for include and scripts
-# deflaults in role directory
+# defaults in role directory
 zabbix_agent_dir_prefix: .
