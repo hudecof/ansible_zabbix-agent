@@ -2,6 +2,7 @@
 - name: "installing repository list (redhat)"
   action: copy src={{ item }} dest=/etc/yum.repos.d/zabbix.repo owner=root group=root mode=0644
   first_available_file:
+    - pkg_yum/zabbix.{{ ansible_distribution }}.{{ ansible_distribution_major_version }}.repo
     - pkg_yum/zabbix.{{ ansible_lsb.id }}.{{ ansible_lsb.major_release }}.repo
     - pkg_yum/zabbix.default.list
   tags:
