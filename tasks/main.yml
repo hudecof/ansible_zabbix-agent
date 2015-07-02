@@ -1,24 +1,30 @@
 ---
 # tasks file for zabbix-agent
-- name: Add the OS specific varibles
-  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: "common | set os specific variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+   - "os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+   - "os-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+   - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+   - "os-{{ ansible_distribution }}.yml"
+   - "os-default.yml"
   tags:
     - zabbix-agent
     - setup
     - config
-    - repository
     - service
- 
-# Debian(setup)  specific tasks
+
+# Debian  specific tasks
 - include: setup-Debian.yml
-  when: "ansible_os_family == 'Debian'"
+  when: ansible_distribution in ('Debian', 'Ubuntu')
 
-# RedHat(setup) specific tasks
-- include: setup-RedHat.yml
-  when: "ansible_os_family == 'RedHat'"
+# CentOS  specific tasks
+- include: setup-CentOS.yml
+  when: ansible_distribution in ('CentOS', 'RedHat')
 
-# Common setup tasks
-- include: setup.yml
+## Common setup tasks
+- include: setup-common.yml
 
 # Common configuration tasks tasks
 - include: config.yml
