@@ -1,0 +1,4 @@
+{
+    "servers": [ "{{ zabbix_agent_config_server|join('"," ') }}" ],
+    "servers_active": [ "{{ zabbix_agent_config_server_active|join('"," ') }}" ]
+}

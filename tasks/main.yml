@@ -31,3 +31,6 @@
 
 # Common service tasks
 - include: service.yml
+
+# setup local facts
+- include: facts.yml
