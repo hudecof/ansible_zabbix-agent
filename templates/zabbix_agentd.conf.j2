@@ -6,7 +6,8 @@
 PidFile={{ zabbix_agent_dir_pid }}/zabbix_agentd.pid
 
 LogFile={{ zabbix_agent_dir_log }}/zabbix_agentd.log
-LogFileSize=1
+LogFileSize=12
+DebugLevel=3
 
 ListenIP={{ zabbix_agent_config_listen_ip|join(',') }}
 StartAgents={{ zabbix_agent_config_start_agents }}
