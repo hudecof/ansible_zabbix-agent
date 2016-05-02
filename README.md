@@ -7,6 +7,7 @@ For supported platform it adds also the zabbix official repository.
 
 - https://www.zabbix.com/documentation/2.0/manual/installation/install_from_packages
 - https://www.zabbix.com/documentation/2.2/manual/installation/install_from_packages
+- https://www.zabbix.com/documentation/2.4/manual/installation/install_from_packages
 
 
 Requirements
@@ -24,10 +25,12 @@ Please readme the descriptions in the
 The variables in the `defautls/main.yml` could be overridden in the `host_vars`/`group_vars`.
 The variables in the `vars/main.yml` are global for all managed servers.
 
+
 Dependencies
 ------------
 
-None
+This role assumes uning official zabbix repository. Thera are few differenciec between the official packaging and the upstream one.
+
 
 License
 -------

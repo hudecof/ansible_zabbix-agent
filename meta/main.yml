@@ -3,7 +3,7 @@ galaxy_info:
   author: Peter Hudec
   description: installation and configuration of the zabbix-agent
   company: CNC, a.s.
-  license: license (GPLv2, CC-BY, etc)
+  license: BSD
   min_ansible_version: 1.4
   
   platforms:

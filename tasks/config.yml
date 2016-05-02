@@ -2,7 +2,8 @@
 - name: "create zabbix-agentd.conf"
   action: template src={{ item }} dest={{ zabbix_agent_dir_etc }}/zabbix_agentd.conf backup=yes owner=root group={{ zabbix_agent_user }} mode=0640
   with_first_found:
-    - zabbix_agentd.conf.j2 
+    - files:
+      - zabbix_agentd.conf.j2 
   tags:
     - zabbix-agent
     - config
