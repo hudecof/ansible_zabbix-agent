@@ -2,5 +2,5 @@
 - name: ensure zabbix agent started/stopped
   service: name={{ zabbix_agent_service }} state={{ zabbix_agent_service_state }} enabled={{ zabbix_agent_service_enabled }}
   tags:
-   - zabbix-agent 
-   - service
+   - zabbix-agent
+   - zabbix-agent:service

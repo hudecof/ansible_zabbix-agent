@@ -1,5 +1,11 @@
 ---
 # list of packages to install
+zabbix_agent_tasks:
+  - packages-CentOS.yml
+  - common-config.yml
+  - common-service.yml
+  - common-facts.yml
+  
 zabbix_agent_packages:
   - zabbix-agent
 
@@ -9,8 +15,3 @@ zabbix_agent_service: zabbix-agent
 # user and group
 zabbix_agent_user: zabbix
 zabbix_agent_group: zabbix
-
-# directories
-zabbix_agent_dir_etc: /etc/zabbix
-zabbix_agent_dir_pid: /var/run/zabbix
-zabbix_agent_dir_log: /var/log/zabbix

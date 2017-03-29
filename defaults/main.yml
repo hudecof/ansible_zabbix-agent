@@ -1,26 +1,26 @@
 ---
 # defaults file for zabbix-agent
 
-zabbix_agent_config_server:
-  - 127.0.0.1
+# directories
+zabbix_agent_dir_etc: /etc/zabbix
+zabbix_agent_dir_pid: /var/run/zabbix
+zabbix_agent_dir_log: /var/log/zabbix
 
-zabbix_agent_config_server_active:
-  - 127.0.0.1
-
-zabbix_agent_config_listen_ip:
-  - 127.0.0.1
-
+zabbix_agent_config_server: []
+zabbix_agent_config_server_active: []
+zabbix_agent_config_listen_ip: []
 zabbix_agent_config_start_agents: 3
 
-# relative path to the zabbix-agent_dir_etc
-zabbix_agent_dir_include: zabbix_agentd.d
-zabbix_agent_dir_scripts: scripts
+zabbix_agent_include_dir: zabbix_agentd.d
+zabbix_agent_include_prefix: .
+zabbix_agent_include_list: []
 
-# rest of the host settings
-zabbix_agent_pkg_state: present
+zabbix_agent_scripts_dir: scripts
+zabbix_agent_scripts_prefix: .
+zabbix_agent_scripts_list: []
+
+zabbix_agent_conf_prefix: .
+zabbix_agent_conf_template: zabbix_agentd.conf.j2
+
 zabbix_agent_service_enabled: yes
 zabbix_agent_service_state: started
-
-# where to lookup for include and scripts
-# defaults in role directory
-zabbix_agent_dir_prefix: .

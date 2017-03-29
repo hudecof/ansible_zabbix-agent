@@ -1,0 +1,64 @@
+---
+- name: "create directories"
+  file:
+    dest: '{{ file_item }}'
+    state: directory
+    owner: root
+    group: '{{ zabbix_agent_user }}'
+    mode: 0750
+  with_items:
+    - '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_include_dir }}'
+    - '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}'
+  loop_control:
+    loop_var: file_item
+  tags:
+    - zabbix-agent
+    - zabbix-agent:config
+
+- name: "create zabbix-agentd.conf"
+  template:
+    src: '{{ zabbix_agent_conf_prefix }}/{{ zabbix_agent_conf_template }}'
+    dest: '{{ zabbix_agent_dir_etc }}/zabbix_agentd.conf'
+    backup: yes
+    owner: root
+    group: '{{ zabbix_agent_user }}'
+    mode: 0640
+  tags:
+    - zabbix-agent
+    - zabbix-agent:config
+  notify:
+    - restart zabbix-agent
+
+- name: "copy include directory"
+  template:
+    src: '{{ zabbix_agent_include_prefix }}/{{ include_item }}'
+    dest: '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_include_dir }}/{{ include_item }}'
+    backup: no
+    owner: root
+    group: '{{ zabbix_agent_user }}'
+    mode: 0640
+  with_items: '{{ zabbix_agent_include_list }}'
+  loop_control:
+    loop_var: include_item
+  tags:
+    - zabbix-agent
+    - zabbix-agent:config
+  notify:
+    - restart zabbix-agent
+
+- name: "copy script directory"
+  template:
+    src: '{{ zabbix_agent_scripts_prefix }}/{{ script_item }}'
+    dest: '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}/{{ script_item }}'
+    backup: no
+    owner: root
+    group: '{{ zabbix_agent_user }}'
+    mode: 0750
+  with_items: '{{ zabbix_agent_scripts_list }}'
+  loop_control:
+    loop_var: script_item
+  tags:
+    - zabbix-agent
+    - zabbix-agent:config
+  notify:
+    - restart zabbix-agent

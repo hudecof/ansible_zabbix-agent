@@ -1,0 +1,11 @@
+---
+
+- name: "centos | install packages"
+  action: yum name={{ package_item }} state=present
+  tags:
+    - zabbix-agent
+    - zabbix-agent:package
+
+  with_items: '{{ zabbix_agent_packages }}'
+  loop_control:
+    loop_var: package_item

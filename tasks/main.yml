@@ -11,26 +11,11 @@
    - "os-default.yml"
   tags:
     - zabbix-agent
-    - setup
-    - config
-    - service
 
-# Debian  specific tasks
-- include: setup-Debian.yml
-  when: ansible_distribution in ('Debian', 'Ubuntu')
-
-# CentOS  specific tasks
-- include: setup-CentOS.yml
-  when: ansible_distribution in ('CentOS', 'RedHat')
-
-## Common setup tasks
-- include: setup-common.yml
-
-# Common configuration tasks tasks
-- include: config.yml
-
-# Common service tasks
-- include: service.yml
-
-# setup local facts
-- include: facts.yml
+- name: "run os specific tasks"
+  include: "{{ task_item }}"
+  with_items: "{{ zabbix_agent_tasks }}"
+  loop_control:
+    loop_var: task_item
+  tags:
+    - zabbix-agent

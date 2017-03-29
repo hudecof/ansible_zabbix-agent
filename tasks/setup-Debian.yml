@@ -1,8 +1,0 @@
----
-
-- name: "debian | install packages"
-  action: apt name={{ item }} state={{ zabbix_agent_pkg_state }}
-  tags:
-    - zabbix-agent
-    - setup
-  with_items: '{{ zabbix_agent_packages }}'
