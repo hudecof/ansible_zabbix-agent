@@ -25,4 +25,4 @@ galaxy_info:
   categories:
   - monitoring
 dependencies:
-  - zabbix-repo
+  - hudecof.zabbix-repo
