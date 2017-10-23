@@ -17,7 +17,7 @@
   template:
     src: '{{ zabbix_agent_conf_prefix }}/{{ zabbix_agent_conf_template }}'
     dest: '{{ zabbix_agent_dir_etc }}/zabbix_agentd.conf'
-    backup: yes
+    backup: "{{ zabbix_agent_config_backup }}"
     owner: root
     group: '{{ zabbix_agent_user }}'
     mode: 0640
