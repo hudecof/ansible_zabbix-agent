@@ -1,6 +1,7 @@
 ---
-- name: "check packages (debian)"
-  apt:
+
+- name: "check packages (redhat)"
+  yum:
     pkg: "{{ package.name }}"
     state: "{{ package.state }}"
   with_items: "{{ zabbix_agent_packages }}"

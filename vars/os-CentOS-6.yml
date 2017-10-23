@@ -1,17 +1,12 @@
 ---
 # list of packages to install
-
-zabbix_agent_tasks:
-  - packages-CentOS.yml
-  - common-config.yml
-  - common-service.yml
-  - common-facts.yml
-
 zabbix_agent_packages:
-  - zabbix-agent
+  - {'name': 'zabbix-agent', 'state': 'present'}
 
 # name of the service
 zabbix_agent_service: zabbix-agent
+
+zabbix_agent_selinux: False
 
 # user and group
 zabbix_agent_user: zabbix

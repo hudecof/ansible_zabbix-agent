@@ -1,0 +1,9 @@
+grep zabbix /var/log/audit/audit.log | audit2allow -M zabbix_agent
+
+******************** IMPORTANT ***********************
+To make this policy package active, execute:
+
+semodule -i zabbix_agent.pp
+
+
+http://jensd.be/587/linux/tips-tricks-for-ansible

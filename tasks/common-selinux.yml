@@ -1,0 +1,19 @@
+---
+- name: selinux check module
+  command: semodule -l
+  register: selinuxmodules
+  check_mode: no
+  changed_when: False
+  when: zabbix_agent_selinux
+
+- name: selinux copy modules
+  copy:
+    src: selinux/zabbix_agent.pp
+    dest: /tmp/zabbix_agent.pp
+    owner: root
+    mode: 0600
+  when: "selinuxmodules.stdout.find('zabbix_agent') == -1"
+
+- name: selinux install module
+  command: semodule -i /tmp/zabbix_agent.pp
+  when: "selinuxmodules.stdout.find('zabbix_agent') == -1"

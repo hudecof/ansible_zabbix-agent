@@ -4,18 +4,47 @@
 - name: "common | set os specific variables"
   include_vars: "{{ item }}"
   with_first_found:
-   - "os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
-   - "os-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-   - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-   - "os-{{ ansible_distribution }}.yml"
-   - "os-default.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "os-{{ ansible_distribution }}.yml"
+    - "os-{{ ansible_os_family }}.yml"
   tags:
     - zabbix-agent
+    - zabbix-agent:config
+    - zabbix-agent:facts
+    - zabbix-agent:package
+    - zabbix-agent:service
+    - zabbix-agent:selinux
 
-- name: "run os specific tasks"
-  include: "{{ task_item }}"
-  with_items: "{{ zabbix_agent_tasks }}"
-  loop_control:
-    loop_var: task_item
+
+- name: include package tasks
+  include: packages-{{ ansible_os_family }}.yml
   tags:
     - zabbix-agent
+    - zabbix-agent:package
+
+- name: include selinux tasks
+  include: common-selinux.yml
+  when: zabbix_agent_selinux
+  tags:
+    - zabbix-agent
+    - zabbix-agent:selinux
+
+- name: include config tasks
+  include: common-config.yml
+  tags:
+    - zabbix-agent
+    - zabbix-agent:config
+
+- name: include facts tasks
+  include: common-facts.yml
+  tags:
+    - zabbix-agent
+    - zabbix-agent:facts
+
+- name: include service tasks
+  include: common-service.yml
+  tags:
+    - zabbix-agent
+    - zabbix-agent:service

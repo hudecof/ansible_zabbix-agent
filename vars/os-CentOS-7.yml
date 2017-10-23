@@ -2,12 +2,15 @@
 # list of packages to install
 zabbix_agent_packages:
   - {'name': 'zabbix-agent', 'state': 'present'}
+  - {'name': 'libselinux-python', 'state': 'present'}
+  - {'name': 'libsemanage-python', 'state': 'present'}
+  - {'name': 'policycoreutils', 'state': 'present'}
+
 
 # name of the service
 zabbix_agent_service: zabbix-agent
 
-zabbix_agent_selinux: False
-
+zabbix_agent_selinux: True
 # user and group
 zabbix_agent_user: zabbix
 zabbix_agent_group: zabbix

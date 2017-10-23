@@ -9,20 +9,21 @@ galaxy_info:
   platforms:
   - name: EL
     versions:
-    - 5
-    - 6
-    - 7
+      - 5
+      - 6
+      - 7
   - name: Ubuntu
     versions:
-    - precise
-    - trusty
-    - xenial
+      - precise
+      - trusty
+      - xenial
   - name: Debian
     versions:
-    - squeeze
-    - wheezy
-    - jessie
+      - squeeze
+      - wheezy
+      - jessie
+      - stretch
   categories:
-  - monitoring
+    - monitoring
 dependencies:
-  - zabbix-repo
+  - hudecof.zabbix-repo

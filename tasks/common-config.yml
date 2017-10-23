@@ -11,9 +11,7 @@
     - '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}'
   loop_control:
     loop_var: file_item
-  tags:
-    - zabbix-agent
-    - zabbix-agent:config
+
 
 - name: "create zabbix-agentd.conf"
   template:
@@ -23,9 +21,6 @@
     owner: root
     group: '{{ zabbix_agent_user }}'
     mode: 0640
-  tags:
-    - zabbix-agent
-    - zabbix-agent:config
   notify:
     - restart zabbix-agent
 
@@ -40,9 +35,6 @@
   with_items: '{{ zabbix_agent_include_list }}'
   loop_control:
     loop_var: include_item
-  tags:
-    - zabbix-agent
-    - zabbix-agent:config
   notify:
     - restart zabbix-agent
 
@@ -57,8 +49,5 @@
   with_items: '{{ zabbix_agent_scripts_list }}'
   loop_control:
     loop_var: script_item
-  tags:
-    - zabbix-agent
-    - zabbix-agent:config
   notify:
     - restart zabbix-agent

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: hudecof.zabbix-agent
+      zabbix_agent_test: True
+      zabbix_agent_selinux: False

@@ -24,3 +24,6 @@ zabbix_agent_conf_template: zabbix_agentd.conf.j2
 
 zabbix_agent_service_enabled: yes
 zabbix_agent_service_state: started
+
+zabbix_agent_selinux: False
+zabbix_agent_test: False
