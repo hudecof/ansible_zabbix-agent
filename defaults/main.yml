@@ -1,16 +1,9 @@
 ---
 # defaults file for zabbix-agent
 
-# directories
 zabbix_agent_dir_etc: /etc/zabbix
-zabbix_agent_dir_pid: /var/run/zabbix
-zabbix_agent_dir_log: /var/log/zabbix
+zabbix_agent_bin: /usr/sbin/zabbix_agentd
 zabbix_agent_config_backup: True
-
-zabbix_agent_config_server: []
-zabbix_agent_config_server_active: []
-zabbix_agent_config_listen_ip: []
-zabbix_agent_config_start_agents: 3
 
 zabbix_agent_include_dir: zabbix_agentd.d
 zabbix_agent_include_prefix: .
@@ -33,3 +26,9 @@ zabbix_agent_service: "{{ __zabbix_agent_service|default('zabbix-agent') }}"
 zabbix_agent_selinux: "{{ __zabbix_agent_selinux|default(False) }}"
 zabbix_agent_user: "{{ __zabbix_agent_user|default('zabbix') }}"
 zabbix_agent_group: "{{ __zabbix_agent_group|default('zabbix')}}"
+
+
+zabbix_agent_config_PidFile: "/var/run/zabbix/zabbix_agentd.pid"
+zabbix_agent_config_LogFile: "/var/log/zabbix/zabbix_agentd.log"
+zabbix_agent_config_ListenIP: ['0.0.0.0', "::0"]
+zabbix_agent_config_Hostname: "{{ inventory_hostname }}"

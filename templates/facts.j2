@@ -1,4 +1,4 @@
 {
-    "servers": {{ zabbix_agent_config_server| to_nice_json  }},
-    "servers_active": {{ zabbix_agent_config_server_active | to_nice_json }}
+    "servers": {{ zabbix_agent_config_Server|default(None)|to_nice_json  }},
+    "servers_active": {{ zabbix_agent_config_ServerActive|default(None)| to_nice_json }}
 }

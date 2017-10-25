@@ -12,18 +12,6 @@
   loop_control:
     loop_var: file_item
 
-
-- name: "create zabbix-agentd.conf"
-  template:
-    src: '{{ zabbix_agent_conf_prefix }}/{{ zabbix_agent_conf_template }}'
-    dest: '{{ zabbix_agent_dir_etc }}/zabbix_agentd.conf'
-    backup: "{{ zabbix_agent_config_backup }}"
-    owner: root
-    group: '{{ zabbix_agent_user }}'
-    mode: 0640
-  notify:
-    - restart zabbix-agent
-
 - name: "copy include directory"
   template:
     src: '{{ zabbix_agent_include_prefix }}/{{ include_item }}'
@@ -49,5 +37,18 @@
   with_items: '{{ zabbix_agent_scripts_list }}'
   loop_control:
     loop_var: script_item
+  notify:
+    - restart zabbix-agent
+
+
+- name: "create zabbix-agentd.conf"
+  template:
+    src: '{{ zabbix_agent_conf_prefix }}/{{ zabbix_agent_conf_template }}'
+    dest: '{{ zabbix_agent_dir_etc }}/zabbix_agentd.conf'
+    backup: "{{ zabbix_agent_config_backup }}"
+    owner: root
+    group: '{{ zabbix_agent_user }}'
+    mode: 0640
+    validate: "{{ zabbix_agent_bin }} -c %s -t agent.version"
   notify:
     - restart zabbix-agent

@@ -3,17 +3,71 @@
 # put custom scripts into {{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}
 # put custom configuration into {{ zabbix_agent_dir_etc }}/{{ zabbix_agent_include_dir }}
 
-PidFile={{ zabbix_agent_dir_pid }}/zabbix_agentd.pid
+{% macro print_list(item_name, item_values=None, ident=0, comment=False) -%}
+{% if item_values is not none -%}
+{% for value in item_values|default([], true) -%}
+{{"\t" * ident}}{{ item_name }}={{ value }}
+{% endfor %}
+{%- elif comment %}
+{{"\t" * ident}}# {{ item_name }}
+{%- endif %}
+{%- endmacro %}
 
-LogFile={{ zabbix_agent_dir_log }}/zabbix_agentd.log
-LogFileSize=12
+{% macro print_listline(item_name, item_values=None, ident=0, comment=False) -%}
+{% if item_values is not none -%}
+{{"\t" * ident}}{{ item_name }}={{ item_values|join(',') }}
+{%- elif comment %}
+{{"\t" * ident}}# {{ item_name }}
+{%- endif %}
+{%- endmacro %}
 
-ListenIP={{ zabbix_agent_config_listen_ip|join(',') }}
-StartAgents={{ zabbix_agent_config_start_agents }}
-Server={{ zabbix_agent_config_server|join(',') }}
-ServerActive={{ zabbix_agent_config_server_active|join(',') }}
+{% macro print_value(item_name, item_value=None, ident=0, comment=False) -%}
+{% if item_value is not none %}
+{{"\t" * ident}}{{ item_name }}={{ item_value }}
+{%- elif comment %}
+{{"\t" * ident}}# {{ item_name }}
+{%- endif %}
+{%- endmacro %}
 
-Hostname={{ inventory_hostname }}
+{{ print_list('Alias', zabbix_agent_config_Alias|default(None), comment=True )}}
+{{ print_value('AllowRoot', zabbix_agent_config_AllowRoot|default(None), comment=True )}}
+{{ print_value('BufferSend', zabbix_agent_config_BufferSend|default(None), comment=True )}}
+{{ print_value('BufferSize', zabbix_agent_config_BufferSize|default(None), comment=True )}}
+{{ print_value('DebugLevel', zabbix_agent_config_DebugLevel|default(None), comment=True )}}
+{{ print_value('EnableRemoteCommands', zabbix_agent_config_EnableRemoteCommands|default(None), comment=True )}}
+{{ print_value('HostMetadata', zabbix_agent_config_HostMetadata|default(None), comment=True )}}
+{{ print_value('HostMetadataItem', zabbix_agent_config_HostMetadataItem|default(None), comment=True )}}
+{{ print_value('Hostname', zabbix_agent_config_Hostname|default(None), comment=True )}}
+{{ print_value('HostnameItem', zabbix_agent_config_HostnameItem|default(None), comment=True )}}
+{{ print_list('Include', zabbix_agent_config_Include|default(None), comment=True )}}
+{{ print_listline('ListenIP', zabbix_agent_config_ListenIP|default(None), comment=True )}}
+{{ print_value('ListenPort', zabbix_agent_config_ListenPort|default(None), comment=True )}}
+{{ print_list('LoadModule', zabbix_agent_config_LoadModule|default(None), comment=True )}}
+{{ print_value('LoadModulePath', zabbix_agent_config_LoadModulePath|default(None), comment=True )}}
+{{ print_value('LogFile', zabbix_agent_config_LogFile|default(None), comment=True )}}
+{{ print_value('LogFileSize', zabbix_agent_config_LogFileSize|default(None), comment=True )}}
+{{ print_value('LogType', zabbix_agent_config_LogType|default(None), comment=True )}}
+{{ print_value('LogRemoteCommands', zabbix_agent_config_LogRemoteCommands|default(None), comment=True )}}
+{{ print_value('MaxLinesPerSecond', zabbix_agent_config_MaxLinesPerSecond|default(None), comment=True )}}
+{{ print_value('PidFile', zabbix_agent_config_PidFile|default(None), comment=True )}}
+{{ print_value('RefreshActiveChecks', zabbix_agent_config_RefreshActiveChecks|default(None), comment=True )}}
+{{ print_listline('Server', zabbix_agent_config_Server|default(None), comment=True )}}
+{{ print_listline('ServerActive', zabbix_agent_config_ServerActive|default(None), comment=True )}}
+{{ print_value('SourceIP', zabbix_agent_config_SourceIP|default(None), comment=True )}}
+{{ print_value('StartAgents', zabbix_agent_config_StartAgents|default(None), comment=True )}}
+{{ print_value('Timeout', zabbix_agent_config_Timeout|default(None), comment=True )}}
+{{ print_value('TLSAccept', zabbix_agent_config_TLSAccept|default(None), comment=True )}}
+{{ print_value('TLSCAFile', zabbix_agent_config_TLSCAFile|default(None), comment=True )}}
+{{ print_value('TLSCertFile', zabbix_agent_config_TLSCertFile|default(None), comment=True )}}
+{{ print_value('TLSConnect', zabbix_agent_config_TLSConnect|default(None), comment=True )}}
+{{ print_value('TLSCRLFile', zabbix_agent_config_TLSCRLFile|default(None), comment=True )}}
+{{ print_value('TLSKeyFile', zabbix_agent_config_TLSKeyFile|default(None), comment=True )}}
+{{ print_value('TLSPSKFile', zabbix_agent_config_TLSPSKFile|default(None), comment=True )}}
+{{ print_value('TLSServerCertIssuer', zabbix_agent_config_TLSServerCertIssuer|default(None), comment=True )}}
+{{ print_value('TLSServerCertSubject', zabbix_agent_config_TLSServerCertSubject|default(None), comment=True )}}
+{{ print_value('User', zabbix_agent_config_User|default(None), comment=True )}}
+{{ print_list('UserParameter', zabbix_agent_config_UserParameter|default(None), comment=True )}}
 
-# put all custom configuration  include dir
+
 Include={{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}
+
