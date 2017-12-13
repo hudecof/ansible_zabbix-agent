@@ -1,7 +1,7 @@
 ---
 - name: copy sudo files
   template:
-    src: '{{ zabbix_agent_sudo_prefix }}/{{ script_item }}'
+    src: '{{ zabbix_agent_sudo_prefix }}/{{ sudo_item }}'
     dest: '/etc/sudoers.d/{{ sudo_item }}'
     backup: no
     owner: root
