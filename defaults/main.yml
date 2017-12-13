@@ -16,6 +16,9 @@ zabbix_agent_scripts_list: []
 zabbix_agent_conf_prefix: .
 zabbix_agent_conf_template: zabbix_agentd.conf.j2
 
+zabbix_agent_sudo_prefix: .
+zabbix_agent_sudo_list: []
+
 zabbix_agent_service_enabled: yes
 zabbix_agent_service_state: started
 

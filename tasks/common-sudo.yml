@@ -1,0 +1,13 @@
+---
+- name: copy sudo files
+  template:
+    src: '{{ zabbix_agent_sudo_prefix }}/{{ script_item }}'
+    dest: '/etc/sudoers.d/{{ sudo_item }}'
+    backup: no
+    owner: root
+    group: root
+    mode: 0640
+    validate: "/usr/sbin/visudo -c -f %s"
+  with_items: '{{ zabbix_agent_sudo_list }}'
+  loop_control:
+    loop_var: sudo_item
