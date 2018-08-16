@@ -1,8 +1,8 @@
 ---
 galaxy_info:
+  role_name: zabbix-agent
   author: Peter Hudec
   description: installation and configuration of the zabbix-agent
-  company: CNC, a.s.
   license: BSD
   min_ansible_version: 2.1
 
@@ -17,14 +17,15 @@ galaxy_info:
       - precise
       - trusty
       - xenial
+      - bionic
   - name: Debian
     versions:
       - squeeze
       - wheezy
       - jessie
       - stretch
-  categories:
+  galaxy_tags:
     - monitoring
 
 dependencies:
-  - hudecof.zabbix-repo
+  - hudecof.zabbix_repo
