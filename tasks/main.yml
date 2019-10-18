@@ -9,6 +9,8 @@
     - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - "os-{{ ansible_distribution }}.yml"
     - "os-{{ ansible_os_family }}.yml"
+    - "os-default.yml"
+
   tags:
     - zabbix-agent
     - zabbix-agent:config
@@ -24,10 +26,12 @@
   tags:
     - zabbix-agent
     - zabbix-agent:package
+  when: zabbix_agent_supprted
 
 - name: include selinux tasks
   include: common-selinux.yml
-  when: zabbix_agent_selinux
+  when: zabbix_agent_selinux and zabbix_agent_supprted
+
   tags:
     - zabbix-agent
     - zabbix-agent:selinux
@@ -37,21 +41,25 @@
   tags:
     - zabbix-agent
     - zabbix-agent:config
+  when: zabbix_agent_supprted
 
 - name: include sudo tasks
   include: common-sudo.yml
   tags:
     - zabbix-agent
     - zabbix-agent:sudo
+  when: zabbix_agent_supprted
 
 - name: include facts tasks
   include: common-facts.yml
   tags:
     - zabbix-agent
     - zabbix-agent:facts
+  when: zabbix_agent_supprted
 
 - name: include service tasks
   include: common-service.yml
   tags:
     - zabbix-agent
     - zabbix-agent:service
+  when: zabbix_agent_supprted
