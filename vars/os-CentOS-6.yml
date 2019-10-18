@@ -2,3 +2,5 @@
 # list of packages to install
 __zabbix_agent_packages:
   - {'name': 'zabbix-agent', 'state': 'present'}
+
+__zabbix_agent_supprted: true
