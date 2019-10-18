@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   roles:
-    - role: hudecof.zabbix-agent
+    - role: hudecof.zabbix_agent
       zabbix_agent_test: True
       zabbix_agent_selinux: False

@@ -1,0 +1,10 @@
+---
+__zabbix_agent_packages:
+  - {'name': 'zabbix-agent', 'state': 'present'}
+  - {'name': 'python3-libselinux', 'state': 'present'}
+  - {'name': 'python3-libsemanage', 'state': 'present'}
+  - {'name': 'policycoreutils', 'state': 'present'}
+
+__zabbix_agent_selinux: True
+
+__zabbix_agent_supprted: true
