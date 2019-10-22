@@ -10,16 +10,8 @@
     - "os-{{ ansible_distribution }}.yml"
     - "os-{{ ansible_os_family }}.yml"
     - "os-default.yml"
-
   tags:
-    - zabbix-agent
-    - zabbix-agent:config
-    - zabbix-agent:sudo
-    - zabbix-agent:facts
-    - zabbix-agent:package
-    - zabbix-agent:service
-    - zabbix-agent:selinux
-
+    - always
 
 - name: include package tasks
   include: packages-{{ ansible_os_family }}.yml
