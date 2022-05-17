@@ -1,31 +1,22 @@
 ---
 galaxy_info:
-  role_name: zabbix-agent
+  namespace: hudecof
+  role_name: zabbix_agent
   author: Peter Hudec
   description: installation and configuration of the zabbix-agent
   license: BSD
   min_ansible_version: 2.1
 
   platforms:
-  - name: EL
-    versions:
-      - 5
-      - 6
-      - 7
-  - name: Ubuntu
-    versions:
-      - precise
-      - trusty
-      - xenial
-      - bionic
-  - name: Debian
-    versions:
-      - squeeze
-      - wheezy
-      - jessie
-      - stretch
-  galaxy_tags:
-    - monitoring
+    - name: EL
+      versions: [5, 6, 7, 8]
+    - name: Ubuntu
+      versions: [precise, trusty, xenial, bionic, focal, jammy]
+    - name: Debian
+      versions: [squeeze, wheezy, jessie, stretch, buster, bullseye]
+    - name: SLES
+      versions: [12, 15]
+  galaxy_tags: [monitoring, zabbix]
 
 dependencies:
   - hudecof.zabbix_repo
