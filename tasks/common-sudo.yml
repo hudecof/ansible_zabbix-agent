@@ -1,9 +1,9 @@
 ---
 - name: copy sudo files
-  template:
+  ansible.builtin.template:
     src: '{{ zabbix_agent_sudo_prefix }}/{{ sudo_item }}'
     dest: '/etc/sudoers.d/{{ sudo_item }}'
-    backup: no
+    backup: false
     owner: root
     group: root
     mode: 0640

@@ -1,6 +1,6 @@
 ---
 - name: "check packages (debian)"
-  apt:
+  ansible.builtin.apt:
     pkg: "{{ package.name }}"
     state: "{{ package.state }}"
   with_items: "{{ zabbix_agent_packages }}"

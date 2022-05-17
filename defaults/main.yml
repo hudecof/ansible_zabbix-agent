@@ -4,7 +4,7 @@ zabbix_agent_supprted: "{{ __zabbix_agent_supprted }}"
 
 zabbix_agent_dir_etc: /etc/zabbix
 zabbix_agent_bin: /usr/sbin/zabbix_agentd
-zabbix_agent_config_backup: True
+zabbix_agent_config_backup: true
 
 zabbix_agent_include_dir: zabbix_agentd.d
 zabbix_agent_include_prefix: .
@@ -20,10 +20,10 @@ zabbix_agent_conf_template: zabbix_agentd.conf.j2
 zabbix_agent_sudo_prefix: .
 zabbix_agent_sudo_list: []
 
-zabbix_agent_service_enabled: yes
+zabbix_agent_service_enabled: true
 zabbix_agent_service_state: started
 
-zabbix_agent_test: False
+zabbix_agent_test: false
 
 zabbix_agent_packages: "{{ __zabbix_agent_packages|default([]) }}"
 zabbix_agent_service: "{{ __zabbix_agent_service|default('zabbix-agent') }}"
@@ -32,7 +32,7 @@ zabbix_agent_user: "{{ __zabbix_agent_user|default('zabbix') }}"
 zabbix_agent_group: "{{ __zabbix_agent_group|default('zabbix')}}"
 
 
-zabbix_agent_config_PidFile: "/var/run/zabbix/zabbix_agentd.pid"
-zabbix_agent_config_LogFile: "/var/log/zabbix/zabbix_agentd.log"
-zabbix_agent_config_ListenIP: ['0.0.0.0', "::0"]
-zabbix_agent_config_Hostname: "{{ inventory_hostname }}"
+zabbix_agent_config_PidFile: "/var/run/zabbix/zabbix_agentd.pid" # noqa var-naming
+zabbix_agent_config_LogFile: "/var/log/zabbix/zabbix_agentd.log" # noqa var-naming
+zabbix_agent_config_ListenIP: ['0.0.0.0', "::0"] # noqa var-naming
+zabbix_agent_config_Hostname: "{{ inventory_hostname }}" # noqa var-naming

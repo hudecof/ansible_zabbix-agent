@@ -1,6 +1,6 @@
 ---
 - name: ensure zabbix agent started/stopped
-  service:
+  ansible.builtin.service:
     name: "{{ zabbix_agent_service }}"
     state: "{{ zabbix_agent_service_state }}"
     enabled: "{{ zabbix_agent_service_enabled }}"

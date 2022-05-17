@@ -1,6 +1,6 @@
 ---
 - name: "create directories"
-  file:
+  ansible.builtin.file:
     dest: '{{ file_item }}'
     state: directory
     owner: root
@@ -13,10 +13,10 @@
     loop_var: file_item
 
 - name: "copy include directory"
-  template:
+  ansible.builtin.template:
     src: '{{ zabbix_agent_include_prefix }}/{{ include_item }}'
     dest: '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_include_dir }}/{{ include_item }}'
-    backup: no
+    backup: false
     owner: root
     group: '{{ zabbix_agent_user }}'
     mode: 0640
@@ -27,10 +27,10 @@
     - restart zabbix-agent
 
 - name: "copy script directory"
-  template:
+  ansible.builtin.template:
     src: '{{ zabbix_agent_scripts_prefix }}/{{ script_item }}'
     dest: '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}/{{ script_item }}'
-    backup: no
+    backup: false
     owner: root
     group: '{{ zabbix_agent_user }}'
     mode: 0750
@@ -42,7 +42,7 @@
 
 
 - name: "create zabbix-agentd.conf"
-  template:
+  ansible.builtin.template:
     src: '{{ zabbix_agent_conf_prefix }}/{{ zabbix_agent_conf_template }}'
     dest: '{{ zabbix_agent_dir_etc }}/zabbix_agentd.conf'
     backup: "{{ zabbix_agent_config_backup }}"

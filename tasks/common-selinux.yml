@@ -1,13 +1,13 @@
 ---
 - name: selinux check module
-  command: semodule -l
+  ansible.builtin.command: semodule -l
   register: selinuxmodules
-  check_mode: no
-  changed_when: False
+  check_mode: false
+  changed_when: false
   when: zabbix_agent_selinux
 
 - name: selinux copy modules
-  copy:
+  ansible.builtin.copy:
     src: selinux/zabbix_agent.pp
     dest: /tmp/zabbix_agent.pp
     owner: root
@@ -15,5 +15,5 @@
   when: "selinuxmodules.stdout.find('zabbix_agent') == -1"
 
 - name: selinux install module
-  command: semodule -i /tmp/zabbix_agent.pp
+  ansible.builtin.command: semodule -i /tmp/zabbix_agent.pp
   when: "selinuxmodules.stdout.find('zabbix_agent') == -1"
