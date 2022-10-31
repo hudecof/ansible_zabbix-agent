@@ -1,6 +1,6 @@
 ---
 # handlers file for zabbix-agent
-- name: restart zabbix-agent
+- name: "restart zabbix-agent"
   ansible.builtin.service:
     name: "{{ zabbix_agent_service }}"
     state: restarted

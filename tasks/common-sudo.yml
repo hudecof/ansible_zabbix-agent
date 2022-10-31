@@ -1,5 +1,5 @@
 ---
-- name: copy sudo files
+- name: "Copy sudo files"
   ansible.builtin.template:
     src: '{{ zabbix_agent_sudo_prefix }}/{{ sudo_item }}'
     dest: '/etc/sudoers.d/{{ sudo_item }}'

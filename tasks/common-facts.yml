@@ -1,6 +1,6 @@
 ---
 
-- name: create facts.d directory
+- name: "Create facts.d directory"
   ansible.builtin.file:
     path: /etc/ansible/facts.d
     mode: 0755
@@ -8,7 +8,7 @@
     owner: root
     group: root
 
-- name: create facts file
+- name: "Create facts file"
   ansible.builtin.template:
     src: facts.j2
     dest: /etc/ansible/facts.d/zabbix_agent.fact

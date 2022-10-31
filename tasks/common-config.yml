@@ -1,5 +1,5 @@
 ---
-- name: "create directories"
+- name: "Create directories"
   ansible.builtin.file:
     dest: '{{ file_item }}'
     state: directory
@@ -12,7 +12,7 @@
   loop_control:
     loop_var: file_item
 
-- name: "copy include directory"
+- name: "Copy include directory"
   ansible.builtin.template:
     src: '{{ zabbix_agent_include_prefix }}/{{ include_item }}'
     dest: '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_include_dir }}/{{ include_item }}'
@@ -26,7 +26,7 @@
   notify:
     - restart zabbix-agent
 
-- name: "copy script directory"
+- name: "Copy script directory"
   ansible.builtin.template:
     src: '{{ zabbix_agent_scripts_prefix }}/{{ script_item }}'
     dest: '{{ zabbix_agent_dir_etc }}/{{ zabbix_agent_scripts_dir }}/{{ script_item }}'
@@ -41,7 +41,7 @@
     - restart zabbix-agent
 
 
-- name: "create zabbix-agentd.conf"
+- name: "Create zabbix-agentd.conf"
   ansible.builtin.template:
     src: '{{ zabbix_agent_conf_prefix }}/{{ zabbix_agent_conf_template }}'
     dest: '{{ zabbix_agent_dir_etc }}/zabbix_agentd.conf'

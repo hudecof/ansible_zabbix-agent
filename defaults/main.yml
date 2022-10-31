@@ -25,11 +25,11 @@ zabbix_agent_service_state: started
 
 zabbix_agent_test: false
 
-zabbix_agent_packages: "{{ __zabbix_agent_packages|default([]) }}"
-zabbix_agent_service: "{{ __zabbix_agent_service|default('zabbix-agent') }}"
-zabbix_agent_selinux: "{{ __zabbix_agent_selinux|default(False) }}"
-zabbix_agent_user: "{{ __zabbix_agent_user|default('zabbix') }}"
-zabbix_agent_group: "{{ __zabbix_agent_group|default('zabbix')}}"
+zabbix_agent_packages: "{{ __zabbix_agent_packages | default([]) }}"
+zabbix_agent_service: "{{ __zabbix_agent_service | default('zabbix-agent') }}"
+zabbix_agent_selinux: "{{ __zabbix_agent_selinux | default(False) }}"
+zabbix_agent_user: "{{ __zabbix_agent_user | default('zabbix') }}"
+zabbix_agent_group: "{{ __zabbix_agent_group | default('zabbix') }}"
 
 
 zabbix_agent_config_PidFile: "/var/run/zabbix/zabbix_agentd.pid" # noqa var-naming

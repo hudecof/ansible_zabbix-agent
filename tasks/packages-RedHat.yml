@@ -1,6 +1,6 @@
 ---
 
-- name: "check packages (redhat)"
+- name: "Check packages (redhat)"
   ansible.builtin.yum:
     pkg: "{{ package.name }}"
     state: "{{ package.state }}"
