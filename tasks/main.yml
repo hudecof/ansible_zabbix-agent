@@ -14,44 +14,67 @@
     - always
 
 - name: "Include package tasks"
-  ansible.builtin.include_tasks: packages-{{ ansible_os_family }}.yml
-  tags:
-    - zabbix-agent
-    - zabbix-agent:package
+  ansible.builtin.include_tasks:
+    file: packages-{{ ansible_os_family }}.yml
+    apply:
+      tags:
+        - zabbix-agent
+        - zabbix-agent:package
   when: zabbix_agent_supprted
+  tags:
+    - always
 
 - name: "Include selinux tasks"
-  ansible.builtin.include_tasks: common-selinux.yml
+  ansible.builtin.include_tasks:
+    file: common-selinux.yml
+    apply:
+      tags:
+        - zabbix-agent
+        - zabbix-agent:selinux
   when: zabbix_agent_selinux and zabbix_agent_supprted
-
   tags:
-    - zabbix-agent
-    - zabbix-agent:selinux
+    - always
 
 - name: "Include config tasks"
-  ansible.builtin.include_tasks: common-config.yml
-  tags:
-    - zabbix-agent
-    - zabbix-agent:config
+  ansible.builtin.include_tasks:
+    file: common-config.yml
+    apply:
+      tags:
+        - zabbix-agent
+        - zabbix-agent:config
   when: zabbix_agent_supprted
+  tags:
+    - always
 
 - name: "Include sudo tasks"
-  ansible.builtin.include_tasks: common-sudo.yml
-  tags:
-    - zabbix-agent
-    - zabbix-agent:sudo
+  ansible.builtin.include_tasks:
+    file: common-sudo.yml
+    apply:
+      tags:
+        - zabbix-agent
+        - zabbix-agent:sudo
   when: zabbix_agent_supprted
+  tags:
+    - always
 
 - name: "Include facts tasks"
-  ansible.builtin.include_tasks: common-facts.yml
-  tags:
-    - zabbix-agent
-    - zabbix-agent:facts
+  ansible.builtin.include_tasks:
+    file: common-facts.yml
+    apply:
+      tags:
+        - zabbix-agent
+        - zabbix-agent:facts
   when: zabbix_agent_supprted
+  tags:
+    - always
 
 - name: "Include service tasks"
-  ansible.builtin.include_tasks: common-service.yml
-  tags:
-    - zabbix-agent
-    - zabbix-agent:service
+  ansible.builtin.include_tasks:
+    file: common-service.yml
+    apply:
+      tags:
+        - zabbix-agent
+        - zabbix-agent:service
   when: zabbix_agent_supprted
+  tags:
+    - always
