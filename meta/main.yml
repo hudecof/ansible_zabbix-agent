@@ -13,7 +13,7 @@ galaxy_info:
     - name: Ubuntu
       versions: [precise, trusty, xenial, bionic, focal, jammy]
     - name: Debian
-      versions: [squeeze, wheezy, jessie, stretch, buster, bullseye]
+      versions: [squeeze, wheezy, jessie, stretch, buster, bullseye, bookworm]
     - name: SLES
       versions: [12, 15]
   galaxy_tags: [monitoring, zabbix]
