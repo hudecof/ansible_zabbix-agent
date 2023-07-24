@@ -1,5 +1,5 @@
 ---
-- name: "check packages (debian)"
+- name: "Check packages (debian)"
   ansible.builtin.apt:
     pkg: "{{ package.name }}"
     state: "{{ package.state }}"
